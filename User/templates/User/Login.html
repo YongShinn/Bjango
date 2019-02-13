@@ -1,0 +1,41 @@
+{% extends "User/base.html" %} {% load static %} {% load crispy_forms_tags %}
+{%block content%}
+<section>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-6"></div>
+      <div class="col-lg-6">
+        <img src="{% static 'User/Logo.png'%}" class="logoImg" alt="BUYN.png" />
+        <div class="loginBox">
+          <h2 class="welcomeMsg">Welcome to BUYN!</h2>
+          <button type="button" class="btn mod-third-party-login-fb">
+            <i class="fab fa-facebook-f alt-login-icon"></i>Login with Facebook
+          </button>
+          <button type="button" class="btn mod-third-party-login-google">
+            <i class="fab fa-google-plus-g alt-login-icon"></i>Login with Google
+          </button>
+          <hr />
+          <form class="" method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+              <legend class="border-bottom mb-4">{{ form | crispy }}</legend>
+            </fieldset>
+            <div class="form-group">
+              <button class="btn btn-outline-info" type="submit">Login</button>
+            </div>
+            <!-- <input class="email" name="uEmail" placeholder="Please enter your E-mail" type="email" required></input><br><br>
+              <input class="password" name="uPassword" placeholder="Please enter your password" type="password" required></input><br><br>
+              <div class="divButton">
+                <input class="myCancel" type="reset" value="Cancel" name="cancellation"></input>
+                <input class="mySubmit" id="mySubmit" type="submit" value="Login" name="submission"></input>
+              </div> -->
+          </form>
+          <h3>New member? <a href="{% url 'register'%}">Register</a> here</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="/indexJS" charset="utf-8"></script>
+{%endblock content %}
